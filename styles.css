@@ -45,7 +45,7 @@
     width:100%;
     gap:30px;
     flex-wrap:wrap;
-    margin-right: 50px;
+    padding-right: 16px;
   }
 
   .contact-social a{
