@@ -86,10 +86,6 @@ matbarroso97.github.io/
 - **Inglês** - Intermediário
 - **Espanhol** - Avançado
 
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
 ---
 
 <div align="center">
