@@ -36,7 +36,8 @@
   .hero-ctas {
     display: flex;
     flex-wrap: wrap;
-    
+    justify-content: center;
+    align-items: center;
   }
 
   .contact-social{
