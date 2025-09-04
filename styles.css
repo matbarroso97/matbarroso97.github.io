@@ -144,3 +144,5 @@ button,
 .demo-btn {
   cursor: pointer;
 }
+
+.hero-ctas .btn i { margin-right: 8px; }
