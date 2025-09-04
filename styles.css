@@ -33,19 +33,50 @@
     padding-bottom:10px;
   }
 
-  .menu{
-    left: 20px;          /* limita entre 20px e 20px */
-    right: 20px;
-    min-width: 0;        /* remove a largura mínima rígida */
-    width: auto;
-  }
-
   .hero-ctas {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
   }
+
+  h2 {
+    text-align: center;
+  }
+
+  .bg-tech{
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(135deg, rgba(8,8,12,.95), rgba(12,8,15,.98));
+  overflow: clip;          /* use clip; se não suportar, vira hidden */
+  /* fallback pra navegadores sem overflow:clip */
+  overflow: hidden;
+  contain: paint;          /* isola a pintura/transform dos filhos */
+  pointer-events: none;
+}
+
+.bg-tech::before,
+.bg-tech::after{
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* garante que nada renderize fora */
+  clip-path: inset(0);     /* CLIPA o pseudo mesmo com transform */
+}
+
+html { 
+  overflow-x: clip;       /* melhor que hidden p/ layout moderno */
+}
+
+
+
+.chips-icons {
+  justify-content: center;
+  align-items: center;
+}
+
+
 
   .contact-social{
     flex-direction:column;
