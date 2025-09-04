@@ -68,3 +68,79 @@
   }
 }
 
+/* ===== Modal de vídeo ===== */
+.modal{
+  position: fixed;
+  inset: 0;
+  display: none;        /* fechado */
+  z-index: 200;
+}
+
+.modal.open{
+  display: grid;        /* centraliza sem transform */
+  place-items: center;
+}
+
+/* backdrop sem interferir na hitbox do conteúdo */
+.modal-backdrop{
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.75);
+  /* REMOVA o blur se o problema voltar */
+  /* backdrop-filter: blur(2px); */
+  z-index: 0;
+}
+
+.modal-dialog{
+  position: relative;
+  z-index: 1;           /* acima do backdrop */
+  max-width: 960px;
+  width: min(960px, calc(100% - 32px));
+  background: #111114;
+  border: 1px solid #232328;
+  border-radius: 12px;
+  padding: 14px 14px 18px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.6);
+  /* garante que nenhuma herança de transform afete a hitbox */
+  transform: none !important;
+}
+
+.modal-title{
+  margin: 0 0 10px;
+  font-size: 16px;
+  color: #eaeaf0;
+  opacity: .9;
+}
+
+.modal-close{
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #2a2a2e;
+  border-radius: 8px;
+  background: #151518;
+  color: #eaeaf0;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 2; /* acima de qualquer overlay */
+}
+
+#demo-video{
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  outline: none;
+  background: #000;
+}
+
+/* Evita scroll da página quando o modal está aberto */
+body.no-scroll{overflow:hidden}
+
+.btn,
+button,
+.demo-btn {
+  cursor: pointer;
+}

@@ -170,3 +170,43 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
+// ==== DEMO EM VÍDEO (modal) ====
+(function () {
+  const modal = document.getElementById('video-modal');
+  const video = document.getElementById('demo-video');
+  const openBtns = document.querySelectorAll('.demo-btn');
+
+  function openModal(src) {
+    // carrega o vídeo do data-attribute
+    video.src = src;
+    modal.classList.add('open');
+    document.body.classList.add('no-scroll');
+    // tenta reproduzir (alguns browsers só tocam após interação)
+    video.play?.().catch(() => {});
+  }
+
+  function closeModal() {
+    // pausa e limpa o src para liberar memória
+    try { video.pause(); } catch(_) {}
+    video.removeAttribute('src'); // evita continuar carregando
+    video.load?.();
+    modal.classList.remove('open');
+    document.body.classList.remove('no-scroll');
+  }
+
+  // abre ao clicar no botão (suporta vários cards)
+  openBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const src = btn.getAttribute('data-video');
+      if (src) openModal(src);
+    });
+  });
+
+  // fecha no X, no backdrop e na tecla ESC
+  modal.addEventListener('click', (e) => {
+    if (e.target.dataset.close === 'true') closeModal();
+  });
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
+  });
+})();
