@@ -33,6 +33,12 @@
     padding-bottom:10px;
   }
 
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    
+  }
+
   .contact-social{
     flex-direction:column;
     width:100%;
