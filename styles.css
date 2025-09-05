@@ -276,6 +276,108 @@ button,
 
   .hero-ctas .btn i { margin-right: 8px; }
 
+/* ====== BADGE AWS INTEGRADO HARMONIOSO ====== */
+.chip.aws-certified {
+  position: relative;
+  background: linear-gradient(135deg, #121214 0%, #0f0f12 100%);
+  border: 1px solid #e60000;
+  box-shadow: 0 0 15px rgba(230, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.chip.aws-certified:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(230, 0, 0, 0.15);
+  border-color: #ff3333;
+}
+
+.cert-indicator {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  width: 18px;
+  height: 18px;
+  background: linear-gradient(135deg, #e60000 0%, #ff3333 100%);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(230, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  z-index: 2;
+  border: 2px solid #0b0b0c;
+}
+
+.chip.aws-certified:hover .cert-indicator {
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(230, 0, 0, 0.4);
+  animation: pulse-glow 0.6s ease-in-out;
+}
+
+/* Tooltip elegante */
+.chip.aws-certified::after {
+  content: 'AWS Certified Cloud Practitioner - Clique para verificar credencial';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #0e0e10;
+  color: #eaeaf0;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 10;
+  border: 1px solid #232328;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  max-width: 200px;
+  text-align: center;
+}
+
+.chip.aws-certified::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(100%);
+  border: 4px solid transparent;
+  border-top-color: #0e0e10;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.chip.aws-certified:hover::after,
+.chip.aws-certified:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-8px);
+}
+
+.chip.aws-certified:hover::before {
+  transform: translateX(-50%) translateY(-4px);
+}
+
+/* Animação de pulse para o indicador */
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 4px 12px rgba(230, 0, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(230, 0, 0, 0.6);
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(230, 0, 0, 0.4);
+  }
+}
+
 /* Melhorar emojis nos botões para mobile */
 @media (max-width: 599px){
   .hero-ctas .btn{

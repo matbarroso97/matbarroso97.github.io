@@ -167,6 +167,43 @@ document.addEventListener('DOMContentLoaded', function () {
     const cleanUrl = window.location.origin + window.location.pathname + '#contato';
     history.replaceState({}, '', cleanUrl);
   }
+
+  // ====== INTERATIVIDADE DO BADGE AWS HARMONIOSO ======
+  const awsChip = document.querySelector('.chip.aws-certified');
+  const certIndicator = document.querySelector('.cert-indicator');
+
+  if (awsChip && certIndicator) {
+    // Efeito de click no chip AWS para abrir a credencial
+    awsChip.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      // Animação de feedback visual mais suave
+      this.style.transform = 'translateY(-2px) scale(1.02)';
+      this.style.boxShadow = '0 12px 30px rgba(230, 0, 0, 0.2)';
+      
+      // Animação no indicador
+      certIndicator.style.animation = 'pulse-glow 0.4s ease-in-out';
+      
+      setTimeout(() => {
+        this.style.transform = 'translateY(-2px) scale(1)';
+        this.style.boxShadow = '0 8px 25px rgba(230, 0, 0, 0.15)';
+      }, 200);
+
+      // Abre a credencial em nova aba
+      window.open('https://www.credly.com/badges/c67a92f9-bac3-45be-9658-dbd60b26e8e1', '_blank', 'noopener,noreferrer');
+    });
+
+    // Efeito de hover no indicador
+    certIndicator.addEventListener('mouseenter', function() {
+      this.style.transform = 'scale(1.3)';
+      this.style.boxShadow = '0 6px 16px rgba(230, 0, 0, 0.5)';
+    });
+
+    certIndicator.addEventListener('mouseleave', function() {
+      this.style.transform = 'scale(1)';
+      this.style.boxShadow = '0 2px 8px rgba(230, 0, 0, 0.3)';
+    });
+  }
 });
 
 
