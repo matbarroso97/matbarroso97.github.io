@@ -239,6 +239,9 @@ a {
 .card-body h3 {
   margin: 0 0 8px;
   font-size: 18px;
+  min-height: 54px; /* Altura mínima para 2 linhas */
+  display: flex;
+  align-items: flex-start;
 }
 
 .card-actions {
