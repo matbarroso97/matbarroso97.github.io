@@ -137,7 +137,43 @@ a {
   display: flex;
   gap: 12px;
   margin-top: 16px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
+
+/* Desktop - organização específica dos botões */
+@media (min-width: 900px) {
+  .hero-ctas {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 12px;
+    align-items: start;
+    justify-content: start;
+  }
+  
+  /* Ver projetos ocupa toda a área esquerda (2 linhas) */
+  .hero-ctas .btn:nth-child(1) { 
+    grid-column: 1; 
+    grid-row: 1 / 3; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    min-height: 80px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  /* GitHub e Contato na primeira linha */
+  .hero-ctas .btn:nth-child(2) { grid-column: 2; grid-row: 1; }
+  .hero-ctas .btn:nth-child(3) { grid-column: 3; grid-row: 1; }
+  
+  /* Currículo Dev e Currículo Dados na segunda linha */
+  .hero-ctas .btn:nth-child(4) { grid-column: 2; grid-row: 2; }
+  .hero-ctas .btn:nth-child(5) { grid-column: 3; grid-row: 2; }
+}
+
 
 /* Botões */
 .btn {
@@ -157,13 +193,30 @@ a {
 }
 
 .btn.primary {
+  background: #b30000;
+  border-color: #b30000;
+  color: #fff;
+}
+
+.btn.primary:hover {
   background: #e60000;
   border-color: #e60000;
-  color: #fff;
 }
 
 .btn.ghost {
   background: transparent;
+  transition: all 0.2s ease;
+}
+
+.btn.ghost:hover {
+  background: rgba(179, 0, 0, 0.1);
+  border-color: rgba(179, 0, 0, 0.3);
+}
+
+/* Suavizar texto destacado */
+strong {
+  color: #eaeaf0;
+  font-weight: 600;
 }
 
 .btn.small {
@@ -206,6 +259,13 @@ a {
   padding: 8px 12px;
   border-radius: 999px;
   font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.chip:hover {
+  background: #1a1a1e;
+  border-color: rgba(179, 0, 0, 0.3);
+  transform: translateY(-1px);
 }
 
 /* Grid de projetos */
@@ -229,7 +289,7 @@ a {
 
 .card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(230, 0, 0, .08);
+  box-shadow: 0 8px 20px rgba(179, 0, 0, .1);
 }
 
 .card-body {
@@ -1448,52 +1508,30 @@ button,
   animation: pulse-glow 0.6s ease-in-out;
 }
 
-/* Tooltip elegante */
+/* Tooltip sem container de fundo */
 .chip.aws-certified::after {
   content: 'AWS Certified Cloud Practitioner - Clique para verificar credencial';
   position: absolute;
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
-  background: #0e0e10;
   color: #eaeaf0;
   padding: 8px 12px;
-  border-radius: 6px;
   font-size: 12px;
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s ease;
   z-index: 10;
-  border: 1px solid #232328;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   max-width: 200px;
   text-align: center;
 }
 
-.chip.aws-certified::before {
-  content: '';
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%) translateY(100%);
-  border: 4px solid transparent;
-  border-top-color: #0e0e10;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s ease;
-  z-index: 10;
-}
-
-.chip.aws-certified:hover::after,
-.chip.aws-certified:hover::before {
+.chip.aws-certified:hover::after {
   opacity: 1;
   transform: translateX(-50%) translateY(-8px);
 }
 
-.chip.aws-certified:hover::before {
-  transform: translateX(-50%) translateY(-4px);
-}
 
 /* Animação de pulse para o indicador */
 @keyframes pulse-glow {
